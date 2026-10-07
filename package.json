@@ -1,0 +1,102 @@
+{
+  "name": "media-matrix-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "apps/desktop/electron/main.js",
+  "scripts": {
+    "test": "node --test apps/desktop/test/*.test.js",
+    "test:backend": "node scripts/test-backend.mjs",
+    "dev:backend": "node scripts/start-backend.mjs",
+    "dev:ui": "npm --prefix vendor/social-auto-upload-web-ui/frontend run dev -- --host 127.0.0.1",
+    "dev:desktop": "wait-on tcp:5173 && node scripts/start-electron.mjs",
+    "dev": "concurrently -k -n CORE,UI,DESKTOP -c yellow,blue,green \"npm:dev:backend\" \"npm:dev:ui\" \"npm:dev:desktop\"",
+    "build:ui": "npm --prefix vendor/social-auto-upload-web-ui/frontend run build",
+    "build:ui:desktop": "node scripts/build-desktop-ui.mjs",
+    "stage:video-engine": "node scripts/stage-video-engine.mjs",
+    "build:video-engine": "node scripts/build-video-engine.mjs",
+    "build:backend-runtime": "node scripts/build-backend-runtime.mjs",
+    "build": "npm run test && npm run test:backend && npm run build:ui:desktop",
+    "pack:win": "npm run build && electron-builder --win --x64 --dir",
+    "dist:win": "npm run build && electron-builder --win nsis --x64"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "electron": "^37.4.0",
+    "electron-builder": "^26.0.12",
+    "wait-on": "^8.0.4"
+  },
+  "dependencies": {
+    "docxtemplater": "^3.69.3",
+    "pizzip": "^3.2.0"
+  },
+  "build": {
+    "appId": "cn.matrixstudio.desktop",
+    "productName": "映织",
+    "asar": true,
+    "directories": {
+      "output": "release",
+      "buildResources": "build-resources"
+    },
+    "files": [
+      "apps/desktop/**/*",
+      "vendor/social-auto-upload-web-ui/frontend/dist/**/*",
+      "vendor/social-auto-upload-web-ui/LICENSE",
+      "THIRD_PARTY_NOTICES.md",
+      "package.json",
+      "!**/*.map",
+      "!**/test{,s}/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "build-resources/video-engine",
+        "to": "video-engine",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "build-resources/backend",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "THIRD_PARTY_NOTICES.md",
+        "to": "THIRD_PARTY_NOTICES.md"
+      },
+      {
+        "from": "vendor/social-auto-upload-web-ui/LICENSE",
+        "to": "licenses/social-auto-upload-web-ui-LICENSE"
+      }
+    ],
+    "electronLanguages": [
+      "zh-CN",
+      "en-US"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "${productName}-${version}-${arch}-Setup.${ext}",
+      "icon": "apps/desktop/assets/frameweave.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": true,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "installerIcon": "apps/desktop/assets/frameweave.ico",
+      "uninstallerIcon": "apps/desktop/assets/frameweave.ico"
+    }
+  },
+  "license": "MIT"
+}

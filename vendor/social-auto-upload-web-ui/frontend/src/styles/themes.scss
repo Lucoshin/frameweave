@@ -1,0 +1,79 @@
+// 主题颜色只在此处定义；页面和 Element Plus 都引用同一组语义变量。
+// 默认亮色与 appStore 一致，暗色通过 html.dark 切换。
+:root,
+html.light {
+  color-scheme: light;
+  --bg-base: #f2f4f7;
+  --bg-elevated: #ffffff;
+  --bg-inset: #f7f8fa;
+  --bg-hover: #edf1f7;
+  --bg-stage: #f9fbfd;
+  --bg-sidebar: #f7f9fc;
+  --bg-base-rgb: 242, 244, 247;
+  --bg-elevated-rgb: 255, 255, 255;
+  --text-primary: #182033;
+  --text-secondary: #4b5b71;
+  --text-muted: #536176;
+  --text-placeholder: #627188;
+  --text-disabled: #8c97a8;
+  --border: rgba(24, 32, 51, 0.12);
+  --border-light: rgba(24, 32, 51, 0.07);
+  --border-active: rgba(23, 105, 232, 0.4);
+  --overlay-rgb: 24, 32, 51;
+  --overlay-strong-rgb: 24, 32, 51;
+  --surface: rgba(24, 32, 51, 0.025);
+  --surface-hover: rgba(24, 32, 51, 0.045);
+  --surface-active: #eaf2ff;
+  --accent: #125fcf;
+  --accent-solid: #1769e8;
+  --accent-hover: #0d58ce;
+  --accent-contrast: #ffffff;
+  --status-success: #196e40;
+  --status-warning: #936000;
+  --status-danger: #bb3444;
+  --shadow-card: 0 10px 30px rgba(31, 45, 72, 0.07);
+  --shadow-dialog: 0 25px 50px rgba(15, 23, 42, 0.18);
+  --shadow-overlay: rgba(15, 23, 42, 0.25);
+  --popper-bg: var(--bg-elevated);
+  --popper-border: var(--border);
+  --popper-hover: var(--bg-hover);
+  --popper-text: var(--text-primary);
+  --popper-text-muted: var(--text-muted);
+  --scrollbar-track: var(--bg-base);
+  --mask: rgba(15, 23, 42, 0.45);
+  --mask-light: rgba(15, 23, 42, 0.2);
+}
+
+html.dark {
+  color-scheme: dark;
+  --bg-base: #111722;
+  --bg-elevated: #1d2838;
+  --bg-inset: #152031;
+  --bg-hover: #29384c;
+  --bg-stage: #172130;
+  --bg-sidebar: #151e2b;
+  --bg-base-rgb: 17, 23, 34;
+  --bg-elevated-rgb: 29, 40, 56;
+  --text-primary: #e7edf6;
+  --text-secondary: #afbdd0;
+  --text-muted: #9aaac0;
+  --text-placeholder: #93a4bc;
+  --text-disabled: #72839b;
+  --border: rgba(180, 200, 228, 0.18);
+  --border-light: rgba(180, 200, 228, 0.1);
+  --border-active: rgba(120, 170, 255, 0.55);
+  --overlay-rgb: 220, 232, 250;
+  --overlay-strong-rgb: 220, 232, 250;
+  --surface: rgba(180, 200, 228, 0.04);
+  --surface-hover: rgba(180, 200, 228, 0.08);
+  --surface-active: #243b5b;
+  --accent: #78aaff;
+  --status-success: #72dba1;
+  --status-warning: #f2c367;
+  --status-danger: #ff929d;
+  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.16);
+  --shadow-dialog: 0 25px 50px rgba(0, 0, 0, 0.45);
+  --shadow-overlay: rgba(0, 0, 0, 0.5);
+  --mask: rgba(0, 0, 0, 0.6);
+  --mask-light: rgba(0, 0, 0, 0.3);
+}

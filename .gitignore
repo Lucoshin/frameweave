@@ -1,0 +1,26 @@
+node_modules/
+.venv/
+dist/
+build-resources/
+release/
+output/
+data/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.log
+.env
+.env.*
+!.env.example
+!.env.*.example
+.DS_Store
+# Internal documentation and local agent settings
+docs/
+design-system/
+changelog/
+README*
+AGENTS.md
+CLAUDE.md
+.codex/
+.agents/
+.kilo/
