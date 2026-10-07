@@ -19,6 +19,7 @@ docs/
 design-system/
 changelog/
 README*
+!/README.md
 AGENTS.md
 CLAUDE.md
 .codex/
